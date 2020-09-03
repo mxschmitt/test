@@ -2,6 +2,6 @@ name: CI
 on: [push]
 jobs:
   build:
-    runs-on: macos-11.0
+    runs-on: macos-10.16
     steps:
     - uses: actions/checkout@v2
