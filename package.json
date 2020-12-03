@@ -1,3 +1,7 @@
 {
-    "name": "playwright"
+  "name": "playwright",
+  "version": "1.6.2",
+  "description": "A high-level API to automate web browsers",
+  "repository": "github:Microsoft/playwright",
+  "license": "Apache-2.0"
 }
