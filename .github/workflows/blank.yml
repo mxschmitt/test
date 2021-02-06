@@ -11,6 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@download-tmate-windows
+      uses: mxschmitt/action-tmate@download-tmate-ubuntu
       with:
         limit-access-to-actor: true
