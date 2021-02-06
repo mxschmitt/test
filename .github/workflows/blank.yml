@@ -11,6 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
-      uses: dscho/action-tmate@limit-access-to-actor
+      uses: mxschmitt/action-tmate@chore/use-actions-exec
       with:
         limit-access-to-actor: true
