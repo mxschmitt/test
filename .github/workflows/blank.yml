@@ -11,3 +11,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Setup tmate session
       uses: dscho/action-tmate@limit-access-to-actor
+      with:
+        limit-access-to-actor: true
