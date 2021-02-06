@@ -1,9 +1,13 @@
 name: CI
-on: [push] 
+on: [push]
 jobs:
-  build:
-    runs-on: ubuntu-latest  
+  build1:
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-2019, ubuntu-18.04, ubuntu-16.04, macos-10.15, macos-11.0]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+      uses: dscho/action-tmate@limit-access-to-actor
