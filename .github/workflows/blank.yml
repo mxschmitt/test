@@ -14,4 +14,4 @@ jobs:
       uses: mxschmitt/action-tmate@bugfix/windows-env
       with:
         limit-access-to-actor: true
-    timeout-minutes: 5
+    timeout-minutes: 15
