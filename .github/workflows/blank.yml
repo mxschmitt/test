@@ -11,6 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@chore/nits
+      uses: mxschmitt/action-tmate@v3
       with:
         limit-access-to-actor: true
+    timeout-minutes: 5
