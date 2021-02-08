@@ -11,5 +11,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@bugfix/continue-win
+      uses: dscho/action-tmate@continue-win
     timeout-minutes: 15
