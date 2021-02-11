@@ -11,5 +11,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@hide-tmate-intro
+      uses: mxschmitt/action-tmate@master
     timeout-minutes: 15
