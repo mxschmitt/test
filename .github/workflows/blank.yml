@@ -10,6 +10,15 @@ jobs:
     name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+      # https://github.com/marketplace/actions/setup-miniconda
+      with:
+        miniconda-version: "latest"
+        channels: conda-forge
+        auto-update-conda: true
+        python-version: 3.8
+    - run: env  
+     # Debugging session
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@master
+      uses: mxschmitt/action-tmate@v3
     timeout-minutes: 30
