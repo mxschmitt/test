@@ -1,7 +1,8 @@
 name: CI
-on: [push]
+on: [push, pull_request]
 jobs:
   build1:
+    timeout-minutes: 30
     strategy:
       fail-fast: false
 #      matrix:
@@ -14,4 +15,3 @@ jobs:
      # Debugging session
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 2
