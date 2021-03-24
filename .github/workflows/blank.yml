@@ -10,10 +10,10 @@ jobs:
       with:
         auto-update-conda: true
         python-version: "3.9"
-    - run: ./test.sh
+    - run: bash test.sh
   without-miniconda:
     runs-on: ubuntu-latest
     name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - run: ./test.sh
+    - run: bash test.sh
