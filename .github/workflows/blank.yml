@@ -1,7 +1,22 @@
 name: CI
 on: [push]
 jobs:
-  build1:
+  with-miniconda:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    name: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: mxschmitt/setup-miniconda@master
+      with:
+        auto-update-conda: true
+        python-version: "3.9"
+     # Debugging session
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 15
+  without-miniconda:
     strategy:
       fail-fast: false
     runs-on: ubuntu-latest
@@ -11,4 +26,4 @@ jobs:
      # Debugging session
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 10
+      timeout-minutes: 15
