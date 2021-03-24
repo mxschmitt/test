@@ -12,10 +12,12 @@ jobs:
       with:
         auto-update-conda: true
         python-version: "3.9"
-     # Debugging session
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 15
+    - run: |
+        cat <<EOT >> example.bash
+          false
+          exit 0
+        EOT
+        bash example.bash
   without-miniconda:
     strategy:
       fail-fast: false
@@ -23,7 +25,9 @@ jobs:
     name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-     # Debugging session
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 15
+    - run: |
+        cat <<EOT >> example.bash
+          false
+          exit 0
+        EOT
+        bash example.bash
