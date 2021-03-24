@@ -2,8 +2,6 @@ name: CI
 on: [push]
 jobs:
   with-miniconda:
-    strategy:
-      fail-fast: false
     runs-on: ubuntu-latest
     name: ${{ matrix.os }}
     steps:
@@ -12,26 +10,10 @@ jobs:
       with:
         auto-update-conda: true
         python-version: "3.9"
-    - run: |
-        cat <<EOT >> example.bash
-          false
-          exit 0
-        EOT
-        bash example.bash
-    - run: |
-        false
+    - run: ./test.sh
   without-miniconda:
-    strategy:
-      fail-fast: false
     runs-on: ubuntu-latest
     name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - run: |
-        cat <<EOT >> example.bash
-          false
-          exit 0
-        EOT
-    - run: |
-        false
-        bash example.bash
+    - run: ./test.sh
