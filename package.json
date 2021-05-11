@@ -2,6 +2,6 @@
   "name": "playwright",
   "version": "1.6.2",
   "description": "A high-level API to automate web browsers",
-  "repository": "github:mxschmitt/test",
+  "repository": "github:msxschmitt/test",
   "license": "Apache-2.0"
 }
