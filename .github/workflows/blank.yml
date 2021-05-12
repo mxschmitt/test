@@ -6,7 +6,7 @@ jobs:
     name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - name: Setup tmate session
+    - name: Setup tmate sessionf
       uses: mxschmitt/action-tmate@bugfix/limit-access-to-actor
       with:
         limit-access-to-actor: true
