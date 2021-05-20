@@ -4,7 +4,7 @@ jobs:
   test_e2e:
     runs-on: ubuntu-20.04
     container:
-      image: mcr.microsoft.com/playwright:v1.10-focal
+      image: mcr.microsoft.com/playwright:v1.10.0-focal
       options: '--ipc=host --entrypoint /bin/bash'
     steps:
       - uses: actions/checkout@v2
