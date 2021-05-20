@@ -1,12 +1,12 @@
 name: CI
 on: [push]
 jobs:
-  with-miniconda:
-    runs-on: ubuntu-latest
-    name: ${{ matrix.os }}
+  test_e2e:
+    runs-on: ubuntu-20.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.10-focal
+      options: '--ipc=host --entrypoint /bin/bash'
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup tmate sessionf
-      uses: mxschmitt/action-tmate@bugfix/limit-access-to-actor
-      with:
-        limit-access-to-actor: true
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: node script.js

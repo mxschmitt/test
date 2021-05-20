@@ -1,7 +1,10 @@
 {
-  "name": "playwright",
+  "name": "playwrig12ht",
   "version": "1.6.2",
   "description": "A high-level API to automate web browsers",
   "repository": "github:msxschmitt/test",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "playwright": "^1.11.0"
+  }
 }
