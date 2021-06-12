@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: mcr.microsoft.com/playwright:focal
+    steps:
+      - checkout
+      - run:
+          command: |
+            node -e "console.log(process.stdout.isTTY)"
