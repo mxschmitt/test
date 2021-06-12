@@ -5,10 +5,5 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       image: mcr.microsoft.com/playwright:v1.10.0-focal
-      options: '--ipc=host'
-      env:
-        HOME: /root
     steps:
-      - uses: actions/checkout@v2
-      - run: npm ci
-      - run: node script.js
+      - run: node -e "console.log(process.stdout.isTTY)"
