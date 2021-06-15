@@ -6,4 +6,4 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.10.0-focal
     steps:
-      - run: node -e "console.log(process.stdout.isTTY)"
+      - run: npm install

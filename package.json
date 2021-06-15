@@ -5,6 +5,11 @@
   "repository": "github:msxschmitt/test",
   "license": "Apache-2.0",
   "dependencies": {
+    "husky": "^6.0.0",
     "playwright": "^1.11.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "test": "echo 'its alright!'"
   }
 }
