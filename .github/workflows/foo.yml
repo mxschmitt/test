@@ -1,9 +1,9 @@
 name: tests
 on: [push, pull_request]
 jobs:
-  tests:
-    name: node
+  pw-tests:
+    name: run-playwright-tests
     runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.19.0-focal
     steps:
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@fix-validation
+      - run: ls -la ~/.cache/ms-playwright
