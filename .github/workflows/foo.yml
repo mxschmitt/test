@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.19.0-focal
     steps:
-      - run: ls -la ~/.cache/ms-playwright
+      - run: ls -la /ms-playwright
