@@ -7,7 +7,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install Docker
       run: |
-        curl -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe"
+        curl -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
         ./DockerDesktopInstaller.exe install --quiet
         rm DockerDesktopInstaller.exe
         /c/Program\ Files/Docker/Docker/DockerCli.exe --SwitchWindowsEngine
