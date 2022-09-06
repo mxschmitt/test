@@ -1,9 +1,9 @@
-name: tests
-on: [push, pull_request]
+name: CI
+on: [push]
 jobs:
-  pw-tests:
-    name: run-playwright-tests
-    runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.19.0-focal
+  build:
+    runs-on: macos-latest
     steps:
-      - run: ls -la /ms-playwright
+    - uses: actions/checkout@v2
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
