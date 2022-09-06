@@ -9,8 +9,7 @@ jobs:
       run: |
         curl -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
         ./DockerDesktopInstaller.exe install --quiet
-        rm DockerDesktopInstaller.exe
-        /c/Program\ Files/Docker/Docker/DockerCli.exe --SwitchWindowsEngine
+        /c/Program\ Files/Docker/Docker/DockerCli.exe --SwitchLinuxEngine
     - run: docker run hello-world
   build-mac:
     runs-on: macos-latest
@@ -19,5 +18,6 @@ jobs:
     - name: Install Docker
       run: |
         brew install --cask docker
+        ln -s /Applications/Docker.app/Contents/Resources/bin /usr/local/bin/docker
         open /Applications/Docker.app
     - run: docker run hello-world
