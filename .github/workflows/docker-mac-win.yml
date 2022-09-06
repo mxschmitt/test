@@ -9,6 +9,8 @@ jobs:
       run: |
         curl -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
         ./DockerDesktopInstaller.exe install --quiet
+        ls -la .
+        ls -la /
         /c/Program\ Files/Docker/Docker/DockerCli.exe --SwitchLinuxEngine
     - run: docker run hello-world
   build-mac:
