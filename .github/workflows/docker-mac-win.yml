@@ -1,0 +1,23 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Docker
+      run: |
+        curl --create-dirs -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe"
+        DockerDesktopInstaller.exe install --quiet
+        rm DockerDesktopInstaller.exe
+        /c/Program\ Files/Docker/Docker/DockerCli.exe --SwitchWindowsEngine
+      shell: pwsh
+    - run: docker run hello-world
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Docker
+      run: |
+        brew install docker
+    - run: docker run hello-world
