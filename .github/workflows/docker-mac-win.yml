@@ -6,6 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install Docker
+      shell: bash
       run: |
         curl -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
         ./DockerDesktopInstaller.exe install --quiet
@@ -17,6 +18,8 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - name: Install Docker
       run: |
         brew install --cask docker
