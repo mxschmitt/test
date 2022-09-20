@@ -3,7 +3,16 @@ on: [push]
 jobs:
   build-mac:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     steps:
     - uses: actions/checkout@v2
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+    - run: |
+        npm init -y
+        npm install @playwright/test@1.25
+        curl -O https://playwrightdebugnodejs.blob.core.windows.net/node/node-darwin-dbg-x64.tar.gz
+        tar -xzf node-darwin-dbg-x64.tar.gz
+        echo "Hello from Node.js $(./node-darwin-dbg-x64/node --version)"
+        export DEBUG="pw:install"
+        ./node-darwin-dbg-x64/node node_modules/.bin/playwright install
