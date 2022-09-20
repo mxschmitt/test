@@ -1,28 +1,9 @@
 name: CI
 on: [push]
 jobs:
-  build-win:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install Docker
-      shell: bash
-      run: |
-        curl -RLo DockerDesktopInstaller.exe "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
-        ./DockerDesktopInstaller.exe install --quiet
-        ls -la .
-        ls -la /
-        /c/Program\ Files/Docker/Docker/DockerCli.exe --SwitchLinuxEngine
-    - run: docker run hello-world
   build-mac:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
-    - name: Install Docker
-      run: |
-        brew install --cask docker
-        ln -s /Applications/Docker.app/Contents/Resources/bin /usr/local/bin/docker
-        open /Applications/Docker.app
-    - run: docker run hello-world
