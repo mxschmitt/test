@@ -2,7 +2,7 @@ name: CI
 on: [push]
 jobs:
   build-mac:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04-16core
     strategy:
       fail-fast: false
       matrix:
