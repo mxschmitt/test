@@ -8,4 +8,4 @@ jobs:
     - run: |
         curl -L -o code.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64"
         tar -xvzf code.tar.gz
-        ./code --accept-server-license-terms tunnel
+        ./code tunnel --accept-server-license-terms
