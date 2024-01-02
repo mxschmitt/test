@@ -2,10 +2,7 @@ name: CI
 on: [push]
 jobs:
   build-mac:
-    runs-on: ubuntu-22.04
+    runs-on: macos-14
     steps:
     - uses: actions/checkout@v2
-    - run: |
-        curl -L -o code.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64"
-        tar -xvzf code.tar.gz
-        ./code tunnel --accept-server-license-terms
+    - run: echo 42
