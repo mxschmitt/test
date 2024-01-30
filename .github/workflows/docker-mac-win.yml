@@ -2,55 +2,7 @@ name: CI
 on: [push]
 jobs:
   build-mac:
-    runs-on: ubuntu-latest
+    runs-on: macos-14-xlarge
     steps:
     - uses: actions/checkout@v2
-    - run: |
-        #!/bin/bash
-        
-        # Set up initial position
-        x=1
-        y=1
-        max_x=70
-        max_y=20
-        
-        # Clear the screen
-        clear
-        
-        # Hide the cursor
-        tput civis
-        
-        # Animation loop
-        while true; do
-            # Move cursor to position (x,y)
-            tput cup $y $x
-        
-            # Display a dot
-            echo -n "."
-        
-            # Change the position (you can modify this logic for different types of movement)
-            ((x=x+1))
-        
-            # Check boundaries
-            if [ $x -ge $max_x ]; then
-                x=1
-                ((y=y+1))
-            fi
-            if [ $y -ge $max_y ]; then
-                y=1
-            fi
-        
-            # Delay for a bit (adjust the sleep duration to control speed)
-            sleep 0.05
-        
-            # Clear the dot (optional)
-            tput cup $y $x
-            echo -n " "
-        done
-        
-        # Reset text format
-        tput sgr0
-        
-        # Show the cursor
-        tput cnorm
-  
+    - run: arch
