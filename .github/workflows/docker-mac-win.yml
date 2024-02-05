@@ -5,4 +5,8 @@ jobs:
     runs-on: macos-14-large
     steps:
     - uses: actions/checkout@v2
-    - run: arch
+    - run: node --version
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts
+    - run: node --version
