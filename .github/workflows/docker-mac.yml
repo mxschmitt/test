@@ -3,9 +3,10 @@ on: [push]
 jobs:
   build-mac:
     strategy:
+      fail-fast: true
       matrix:
         macos-version: [macos-11, macos-12, macos-13, macos-14]
-    runs-on: ${{  matrix..macos-version }}
+    runs-on: ${{  matrix.macos-version }}
     steps:
     - uses: actions/checkout@v4
     - run: ps aux | grep fontd
