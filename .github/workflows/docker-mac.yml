@@ -18,13 +18,13 @@ jobs:
     - name: Upload 1
       uses: actions/upload-artifact@v4
       with:
-        name: blob-report-1
+        name: blob-reports-1
         path: blob-report
         retention-days: 1
     - name: Upload 2
       uses: actions/upload-artifact@v4
       with:
-        name: blob-report-2
+        name: blob-reports-2
         path: blob-report
         retention-days: 1
   test_download:
