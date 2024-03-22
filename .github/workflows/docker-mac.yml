@@ -1,13 +1,46 @@
-name: CI
-on: [push]
+name: "tests repro"
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  build-mac:
-    strategy:
-      fail-fast: true
-      matrix:
-        macos-version: [macos-11, macos-12, macos-13, macos-14]
-    runs-on: ${{  matrix.macos-version }}
+  test_upload:
+    name: upload
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - run: ps aux | grep fontd
-    - run: log show --predicate 'process == "fontd"' --info --last 1h
+    - name: Prepare environment
+      run: |
+        mkdir blob-report
+        curl -o blob-report/data.zip https://demo.playwright.dev/reports/todomvc/data/cb0fa77ebd9487a5c899f3ae65a7ffdbac681182.zip
+    - name: Upload 1
+      uses: actions/upload-artifact@v4
+      with:
+        name: blob-report-not-unique
+        path: blob-report
+        retention-days: 1
+    - name: Upload 2
+      uses: actions/upload-artifact@v4
+      with:
+        name: blob-report-not-unique
+        path: blob-report
+        retention-days: 1
+  test_download:
+    name: download
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Download blob reports from GitHub Actions Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        pattern: blob-reports-*
+        path: all-blob-reports
+    - name: Report Integrity check
+      shell: bash
+      run: |
+        for file in all-blob-reports/*.zip; do
+          unzip -t $file
+        done
+    
