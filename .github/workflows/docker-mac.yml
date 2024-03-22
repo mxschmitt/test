@@ -38,10 +38,7 @@ jobs:
       with:
         pattern: blob-reports-*
         path: all-blob-reports
+        merge-multiple: true
     - name: Report Integrity check
       shell: bash
-      run: |
-        for file in all-blob-reports/*.zip; do
-          unzip -t $file
-        done
-    
+      run: find all-blob-reports -name "*.zip" -exec unzip -t {} \;
