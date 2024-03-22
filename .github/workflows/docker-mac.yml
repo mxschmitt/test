@@ -18,18 +18,19 @@ jobs:
     - name: Upload 1
       uses: actions/upload-artifact@v4
       with:
-        name: blob-report-not-unique
+        name: blob-report-1
         path: blob-report
         retention-days: 1
     - name: Upload 2
       uses: actions/upload-artifact@v4
       with:
-        name: blob-report-not-unique
+        name: blob-report-2
         path: blob-report
         retention-days: 1
   test_download:
     name: download
     runs-on: ubuntu-latest
+    needs: [test_upload]
     steps:
     - uses: actions/checkout@v4
     - name: Download blob reports from GitHub Actions Artifacts
