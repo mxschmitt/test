@@ -8,37 +8,8 @@ on:
 jobs:
   test_upload:
     name: upload
-    runs-on: ubuntu-latest
+    runs-on: macos-14-xl
     steps:
     - uses: actions/checkout@v4
     - name: Prepare environment
-      run: |
-        mkdir blob-report
-        curl -o blob-report/data.zip https://demo.playwright.dev/reports/todomvc/data/cb0fa77ebd9487a5c899f3ae65a7ffdbac681182.zip
-    - name: Upload 1
-      uses: actions/upload-artifact@v4
-      with:
-        name: blob-reports-1
-        path: blob-report
-        retention-days: 1
-    - name: Upload 2
-      uses: actions/upload-artifact@v4
-      with:
-        name: blob-reports-2
-        path: blob-report
-        retention-days: 1
-  test_download:
-    name: download
-    runs-on: ubuntu-latest
-    needs: [test_upload]
-    steps:
-    - uses: actions/checkout@v4
-    - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        pattern: blob-reports-*
-        path: all-blob-reports
-        merge-multiple: true
-    - name: Report Integrity check
-      shell: bash
-      run: find all-blob-reports -name "*.zip" -exec unzip -t {} \;
+      run: arch
