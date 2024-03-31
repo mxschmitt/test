@@ -36,5 +36,5 @@ jobs:
             sudo apt-get remove -y google-cloud-cli --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-cli --fix-missing] failed to complete successfully. Proceeding..."
     steps:
     - uses: actions/checkout@v4
-    - name: ${{ matrix..command }}
-    - run: ${{ matrix..command }}
+    - run: ${{ matrix.command }}
+      name: ${{ matrix.command }}
