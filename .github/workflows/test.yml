@@ -6,14 +6,14 @@ on:
       - main
 
 jobs:
-  test_upload:
-    name: upload
-    runs-on: macos-14-large
+  amd:
+    name: upload2
+    runs-on: macos-14
     steps:
     - uses: actions/checkout@v4
     - run: arch
 
-  test_upload2:
+  arm:
     name: upload
     runs-on: macos-14-xlarge
     steps:
