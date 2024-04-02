@@ -8,33 +8,14 @@ on:
 jobs:
   test_upload:
     name: upload
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        command:
-          - |
-            sudo apt-get remove -y \
-              '^aspnetcore-.*' \
-              '^dotnet-.*' \
-              '^llvm-.*' \
-              'php.*' \
-              '^mongodb-.*' \
-              '^mysql-.*'\
-              azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri \
-              google-cloud-sdk \
-              google-cloud-cli \
-              --fix-missing || echo "::warning::One or more removals failed. Proceeding..."
-          - |
-            sudo apt-get remove -y '^aspnetcore-.*' || echo "::warning::The command [sudo apt-get remove -y '^aspnetcore-.*'] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y '^dotnet-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^dotnet-.*' --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y '^llvm-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^llvm-.*' --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y 'php.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y 'php.*' --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y '^mongodb-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mongodb-.*' --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y '^mysql-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mysql-.*' --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing || echo "::warning::The command [sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y google-cloud-sdk --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-sdk --fix-missing] failed to complete successfully. Proceeding..."
-            sudo apt-get remove -y google-cloud-cli --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-cli --fix-missing] failed to complete successfully. Proceeding..."
+    runs-on: macos-14-large
     steps:
     - uses: actions/checkout@v4
-    - run: ${{ matrix.command }}
-      name: ${{ matrix.command }}
+    - run: arch
+
+  test_upload2:
+    name: upload
+    runs-on: macos-14-xlarge
+    steps:
+    - uses: actions/checkout@v4
+    - run: arch
