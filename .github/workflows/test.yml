@@ -9,7 +9,7 @@ jobs:
   arm:
     name: upload
     runs-on: macos-14-xlarge
+    environment: Test
     steps:
     - uses: actions/checkout@v4
-    - uses: ./.github/actions/download-artifact
     - run: arch
