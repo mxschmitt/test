@@ -6,16 +6,10 @@ on:
       - main
 
 jobs:
-  amd:
-    name: upload2
-    runs-on: macos-14
-    steps:
-    - uses: actions/checkout@v4
-    - run: arch
-
   arm:
     name: upload
     runs-on: macos-14-xlarge
     steps:
+    - uses: ./.github/actions/download-artifact/action.yml
     - uses: actions/checkout@v4
     - run: arch

@@ -1,0 +1,9 @@
+name: test
+description: test
+runs:
+  using: "composite"
+  steps:
+    - name: echo 123
+      shell: bash
+      run: echo $$ {{ secrets.TEST }}
+    
