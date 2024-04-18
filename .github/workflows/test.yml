@@ -11,5 +11,5 @@ jobs:
     runs-on: macos-14-xlarge
     steps:
     - uses: actions/checkout@v4
-    - uses: ./.github/actions/download-artifact/action.yml
+    - uses: ./.github/actions/download-artifact
     - run: arch
