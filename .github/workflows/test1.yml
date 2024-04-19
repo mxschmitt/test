@@ -1,4 +1,4 @@
-name: "tests repro"
+name: "test1"
 
 on:
   push:
@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  arm:
-    name: upload
-    runs-on: macos-14-xlarge
+  test1:
+    name: test1
+    runs-on: ubuntu-latest
     environment: Test
     steps:
     - uses: actions/checkout@v4
