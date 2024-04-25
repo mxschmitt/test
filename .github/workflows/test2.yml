@@ -10,8 +10,9 @@ jobs:
     name: test2
     strategy:
       matrix:
-        runs-on: [macos-12, macos-13, macos-14]
+        runs-on: [windows-latest]
     runs-on: ${{ matrix.runs-on }}
     steps:
     - uses: actions/checkout@v4
-    - run: ls -la "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
+    - run: uname
+      shell: bash
