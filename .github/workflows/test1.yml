@@ -8,7 +8,7 @@ on:
 jobs:
   test1:
     name: test1
-    runs-on: $ {{ matrix.runs-on }}
+    runs-on: ${{ matrix.runs-on }}
     environment: Test
     strategy:
       matrix:
