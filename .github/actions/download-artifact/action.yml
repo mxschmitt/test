@@ -5,5 +5,5 @@ runs:
   steps:
     - name: echo 123
       shell: bash
-      run: echo ${{ secrets.TEST }}
+      run: echo $FOO
     
