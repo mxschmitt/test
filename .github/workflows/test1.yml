@@ -8,9 +8,11 @@ on:
 jobs:
   test1:
     name: test1
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     environment: Test
     steps:
     - uses: actions/checkout@v4
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+    - run: echo "echo \$FOO" >> test.sh
+    - run: sudo bash test.sh
+      env:
+        FOO: 123
