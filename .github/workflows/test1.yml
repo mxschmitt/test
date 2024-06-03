@@ -12,6 +12,4 @@ jobs:
     environment: Test
     steps:
     - uses: actions/checkout@v4
-    - run: echo "::group::npx playwright install --with-deps"
-    - run: test123
-    - run: echo "::endgroup::"
+    - uses: ./.github/actions/download-artifact/
