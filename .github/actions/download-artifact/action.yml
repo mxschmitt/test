@@ -3,7 +3,10 @@ description: test
 runs:
   using: "composite"
   steps:
-    - name: echo 123
+    - run: echo "::group::npx playwright install --with-deps"
       shell: bash
-      run: echo $FOO
+    - run: echo test123
+      shell: bash
+    - run: echo "::endgroup::"
+      shell: bash
     
