@@ -12,7 +12,6 @@ jobs:
     environment: Test
     steps:
     - uses: actions/checkout@v4
-    - run: echo "echo \$FOO" >> test.sh
-    - run: sudo bash test.sh
-      env:
-        FOO: 123
+    - run: echo "::group::npx playwright install --with-deps"
+    - run: test123
+    - run: echo "::endgroup::"
