@@ -8,8 +8,8 @@ on:
 jobs:
   test1:
     name: test1
-    runs-on: ubuntu-latest
+    runs-on: macos-13
     environment: Test
     steps:
     - uses: actions/checkout@v4
-    - uses: ./.github/actions/download-artifact/
+    - run: system_profiler SPDisplaysDataType
