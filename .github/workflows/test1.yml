@@ -8,7 +8,7 @@ on:
 jobs:
   test1:
     name: test1
-    runs-on: macos-13
+    runs-on: macos-13-xlarge
     environment: Test
     steps:
     - uses: actions/checkout@v4
