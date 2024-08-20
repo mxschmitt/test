@@ -8,8 +8,8 @@ on:
 jobs:
   test1:
     name: test1
-    runs-on: macos-14
+    runs-on: macos-13
     environment: Test
     steps:
     - uses: actions/checkout@v4
-    - run: system_profiler SPDisplaysDataType
+    - run: system_profiler SPHardwareDataType
