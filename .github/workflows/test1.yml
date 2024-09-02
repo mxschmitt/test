@@ -8,7 +8,7 @@ on:
 jobs:
   test1:
     name: test1
-    runs-on: macos-14-xlarge
+    runs-on: macos-14-large
     steps:
     - uses: actions/checkout@v4
     - name: Setup tmate session
