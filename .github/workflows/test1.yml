@@ -1,4 +1,4 @@
-name: "test1"
+name: Test PR WebKit Ubuntu
 
 on:
   push:
@@ -6,10 +6,69 @@ on:
       - main
 
 jobs:
-  test1:
-    name: test1
-    runs-on: macos-14-large
+  build:
+    name: Build ${{ matrix.distribution }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - distribution: ubuntu-20.04
+          - distribution: ubuntu-22.04
+          - distribution: ubuntu-24.04
+    runs-on:
+      labels: ${{ matrix.runs-on }}
     steps:
     - uses: actions/checkout@v4
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+    - run: exit 1
+      if: ${{ matrix.distribution == 'ubuntu-24.04' }}
+
+  test:
+    name: Test ${{ matrix.distribution }} ${{ matrix.mode }}
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - mode: headless
+            distribution: ubuntu-20.04
+            runs-on: devdiv-playwright-ubuntu20-premium-runners
+          - mode: headed
+            distribution: ubuntu-20.04
+            runs-on: devdiv-playwright-ubuntu20-premium-runners
+          - mode: headless
+            distribution: ubuntu-22.04
+            runs-on: devdiv-playwright-ubuntu22-premium-runners
+          - mode: headed
+            distribution: ubuntu-22.04
+            runs-on: devdiv-playwright-ubuntu22-premium-runners
+          - mode: headless
+            distribution: ubuntu-24.04
+            runs-on: ubuntu-24.04
+          - mode: headed
+            distribution: ubuntu-24.04
+            runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: microsoft/playwright
+    - name: download archive
+      uses: actions/download-artifact@v4
+      with:
+        name: browser-binary-${{ matrix.distribution }}
+        path: /tmp
+    - name: extract archive
+      run: unzip /tmp/archive.zip -d /tmp/webkit-build
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - run: npm ci
+      env:
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+    - run: npm run build
+    - run: npx playwright install --with-deps chromium
+    - run: npx playwright install-deps webkit
+    - if: ${{ matrix.mode == 'headless' }}
+      run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- npm run wtest
+    - if: ${{ matrix.mode == 'headed' }}
+      run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- npm run wtest -- --headed
