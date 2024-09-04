@@ -15,8 +15,7 @@ jobs:
           - distribution: ubuntu-20.04
           - distribution: ubuntu-22.04
           - distribution: ubuntu-24.04
-    runs-on:
-      labels: ${{ matrix.runs-on }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: exit 1
