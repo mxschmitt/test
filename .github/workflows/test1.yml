@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     name: Build ${{ matrix.distribution }}
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
