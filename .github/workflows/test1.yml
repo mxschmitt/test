@@ -15,6 +15,9 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
+    - run: |
+        sudo apt update
+        apt install -y gcc
     # It fails here: https://github.com/git/git/blob/master/setup.c#L1290
     - run: |
           echo "Hello I'm user $(whoami) with id $(id)"
