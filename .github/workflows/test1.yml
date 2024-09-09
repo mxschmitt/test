@@ -16,5 +16,7 @@ jobs:
       with:
         fetch-depth: 0
     - run: |
-        whoami
-        ls -la
+          git ls-files --others --exclude-standard
+          git rev-parse --show-toplevel
+          whoami
+          ls -la
