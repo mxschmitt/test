@@ -16,7 +16,7 @@ jobs:
       with:
         fetch-depth: 0
     - run: |
-        sudo apt update
+        apt update
         apt install -y gcc
     # It fails here: https://github.com/git/git/blob/master/setup.c#L1290
     - run: |
