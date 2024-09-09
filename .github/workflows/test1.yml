@@ -19,4 +19,6 @@ jobs:
     - run: |
           echo "Hello I'm user $(whoami) with id $(id)"
           ls -lad $GITHUB_WORKSPACE
+          gcc -o check_root check_root.c
+          ./check_root
           git ls-files --others --exclude-standard
