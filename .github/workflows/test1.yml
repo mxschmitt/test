@@ -17,6 +17,7 @@ jobs:
         fetch-depth: 0
     # It fails here: https://github.com/git/git/blob/master/setup.c#L1290
     - run: |
+          env
           echo "Hello I'm user $(whoami) with UID $UID"
           ls -la
           git ls-files --others --exclude-standard
