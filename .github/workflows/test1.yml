@@ -8,8 +8,13 @@ on:
 jobs:
   test:
     name: test
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.46.1-jammy
     steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - run: |
-        sudo apt-get install -y firefox
-        file /usr/bin/firefox
+        whoami
+        ls -la
