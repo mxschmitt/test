@@ -5,22 +5,23 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  read_playwright_version:
+  read-playwright-version:
+    name: 'Read Playwright Version'
     runs-on: ubuntu-latest
     outputs:
       playwright-version: ${{ steps.get_playwright_version.outputs.playwright-version }}
     steps:
       - uses: actions/checkout@v4
       - run: |
-          playwright_version=$(node -e 'require("./package-lock.json")["packages"]["node_modules/@playwright/test"].version')
+          playwright_version=$(node -e 'console.log(require("./package-lock.json")["packages"]["node_modules/@playwright/test"].version)')
           echo "playwright-version=$playwright_version" >> $GITHUB_OUTPUT
         id: get_playwright_version
   playwright:
-    name: 'Playwright Tests'
+    name: 'Run Playwright Tests'
     runs-on: ubuntu-latest
-    needs: read_playwright_version
+    needs: read-playwright-version
     container:
-      image: mcr.microsoft.com/playwright:v${{ needs.read_playwright_version.outputs.playwright-version }}-noble
+      image: mcr.microsoft.com/playwright:v${{ needs.read-playwright-version.outputs.playwright-version }}-noble
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
