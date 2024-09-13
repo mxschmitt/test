@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+          id
           playwright_version=$(node -e 'console.log(require("./package-lock.json")["packages"]["node_modules/@playwright/test"].version)')
           echo "playwright-version=$playwright_version" >> $GITHUB_OUTPUT
         id: get_playwright_version
