@@ -24,6 +24,7 @@ jobs:
     - name: Take screenshot with Chrome Beta
       run: |
         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+        --use-angle \
         --screenshot=screenshot.png \
         file://$PWD/canvas.html \
         --headless
