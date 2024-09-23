@@ -1,20 +1,36 @@
-name: Test Conditions
+name: Take Screenshot with Chrome Beta
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  test-conditions:
-    runs-on: ubuntu-latest
+  screenshot:
+    name: Take Screenshot
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-14-large, macos-14-xlarge]
+
     steps:
-      - name: Step 1 - Always runs
-        run: echo "This is step 1"
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Step 2 - Set output
-        id: set-output
-        run: |
-          echo "status=123" >> "$GITHUB_OUTPUT"
-          exit 1
+    - run: arch
 
-      - name: Step 3 - Check output
-        if: steps.set-output.outputs.status == '123'
-        run: echo "Output status is 123"
+    - name: Take screenshot with Chrome Beta
+      run: |
+        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+        --screenshot=screenshot.png \
+        file://$PWD/canvas.html \
+        --headless
+
+    - name: Upload screenshot artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: screenshot-${{ matrix.os }}
+        path: screenshot.png
+        if-no-files-found: error
