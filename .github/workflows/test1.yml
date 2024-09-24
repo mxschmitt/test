@@ -20,13 +20,5 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Take screenshot with Chrome Beta
-      run: |
-        npm ci
-        node screenshot.mjs
+      run: node -e "console.log(os.arch())"
 
-    - name: Upload screenshot artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: screenshot-${{ matrix.os }}
-        path: screenshot.png
-        if-no-files-found: error
