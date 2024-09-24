@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14-large, macos-14-xlarge]
+        os: [macos-13-large, macos-13-xlarge]
 
     steps:
     - name: Checkout code
