@@ -1,4 +1,4 @@
-name: Take Screenshot with Chrome Beta
+name: Test
 
 on:
   push:
@@ -8,17 +8,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  screenshot:
-    name: Take Screenshot
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-13-large, macos-13-xlarge]
-
+  test:
+    runs-on: ubuntu-24.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - run: |
+        docker run \
+          --rm \
+          --name docker-tests \
+          --platform linux/arm64 \
+          -t \
+          ubuntu:noble /bin/bash -c '
+            set -e
+            apt-get update && apt-get install -y curl
 
-    - name: Take screenshot with Chrome Beta
-      run: node -e "console.log(os.arch())"
-
+            curl -O https://playwright.azureedge.net/builds/driver/next/playwright-1.47.0-beta-1726138322000-mac.zip
+          '
