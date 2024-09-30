@@ -25,5 +25,5 @@ jobs:
             set -e
             apt-get update && apt-get install -y curl
 
-            curl -O https://playwright.azureedge.net/builds/driver/next/playwright-1.47.0-beta-1726138322000-mac.zip
+            curl -k -O https://playwright.azureedge.net/builds/driver/next/playwright-1.47.0-beta-1726138322000-mac.zip
           '
