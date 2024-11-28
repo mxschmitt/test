@@ -9,21 +9,6 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    runs-on: windows-latest
     steps:
-    - name: Set up Docker QEMU for arm64 docker builds
-      uses: docker/setup-qemu-action@v3
-      with:
-        platforms: arm64
-    - run: |
-        docker run \
-          --rm \
-          --name docker-tests \
-          --platform linux/arm64 \
-          -t \
-          ubuntu:noble /bin/bash -c '
-            set -e
-            apt-get update && apt-get install -y curl
-
-            curl -k -O https://playwright.azureedge.net/builds/driver/next/playwright-1.47.0-beta-1726138322000-mac.zip
-          '
+    - run: tar --version
