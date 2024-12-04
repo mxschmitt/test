@@ -9,6 +9,8 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-22.04
     steps:
-    - run: tar --version
+    - run: |
+        apt-get update
+        apt list libgtk-4-1
