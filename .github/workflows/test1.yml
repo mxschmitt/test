@@ -12,5 +12,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - run: |
-        apt-get update
-        apt list libgtk-4-1
+        sudo apt-get update
+        sudo apt list libgtk-4-1
