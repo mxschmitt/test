@@ -18,5 +18,5 @@ jobs:
         df -h
         npx playwright install --with-deps
         df -h
-        npm run wtest
+        xvfb-run npm run wtest
         df -h
