@@ -11,6 +11,4 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-    - run: |
-        sudo apt-get update
-        sudo apt list libgtk-4-1
+    - run: df -h
