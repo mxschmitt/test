@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - run: |
-        git clone https://github.com/microsoft/playwright-browsers
+        git clone https://github.com/microsoft/playwright
         cd playwright
         npm i && npm run build
         df -h
