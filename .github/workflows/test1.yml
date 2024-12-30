@@ -11,4 +11,12 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-    - run: df -h
+    - run: |
+        git clone https://github.com/microsoft/playwright-browsers
+        cd playwright
+        npm i && npm run build
+        df -h
+        npx playwright install --with-deps
+        df -h
+        npm run wtest
+        df -h
