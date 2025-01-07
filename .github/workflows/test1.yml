@@ -16,4 +16,5 @@ jobs:
         cd playwright
         npm i && npm run build
         DEBUG=pw:install npx playwright install --with-deps chromium
-        /home/runner/.cache/ms-playwright/chromium-1153/chrome-linux/chrome --headless --timeout=5000 --screenshot=screenshot.png https://example.com
+        sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+        DEBUG=pw:browser,pw:api npm run etest
