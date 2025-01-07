@@ -9,14 +9,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - run: |
         git clone https://github.com/microsoft/playwright
         cd playwright
         npm i && npm run build
-        df -h
-        npx playwright install --with-deps
-        df -h
-        xvfb-run npm run wtest
-        df -h
+        npx playwright install --with-deps chromium
+        DEBUG=pw:api xvfb-run npm run etest
