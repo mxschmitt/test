@@ -17,4 +17,4 @@ jobs:
         npm i && npm run build
         DEBUG=pw:install npx playwright install --with-deps chromium
         sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-        DEBUG=pw:browser,pw:api npm run etest
+        DEBUG=pw:browser,pw:api xvfb-run npm run etest
