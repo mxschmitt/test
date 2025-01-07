@@ -9,11 +9,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - run: |
         git clone https://github.com/microsoft/playwright
         cd playwright
         npm i && npm run build
         DEBUG=pw:install npx playwright install --with-deps chromium
-        --headless --timeout=5000 --screenshot=screenshot.png https://www.costco.com
+        /home/runner/.cache/ms-playwright/chromium-1153/chrome-linux/chrome --headless --timeout=5000 --screenshot=screenshot.png https://example.com
