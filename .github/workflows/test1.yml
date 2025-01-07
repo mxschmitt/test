@@ -15,5 +15,6 @@ jobs:
         git clone https://github.com/microsoft/playwright
         cd playwright
         npm i && npm run build
+        ls -la /home/runner/work/test/test/playwright/node_modules/electron/dist/chrome-sandbox
         npx playwright install --with-deps chromium
         DEBUG=pw:api,pw:browser xvfb-run npm run etest
