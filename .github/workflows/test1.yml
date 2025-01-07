@@ -16,4 +16,4 @@ jobs:
         cd playwright
         npm i && npm run build
         npx playwright install --with-deps chromium
-        DEBUG=pw:api xvfb-run npm run etest
+        DEBUG=pw:api,pw:browser xvfb-run npm run etest
