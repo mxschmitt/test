@@ -9,12 +9,13 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matmatrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+      fail-fast: false
     steps:
     - run: |
-        git clone https://github.com/microsoft/playwright
-        cd playwright
-        npm i && npm run build
-        DEBUG=pw:install npx playwright install --with-deps chromium
-        sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-        xvfb-run npm run etest
+        ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-35;google_apis;$ANDROID_ARCH" platform-tools emulator
+        ${ANDROID_HOME}/cmdline-tools/latest/bin/avdmanager create avd --force --name android35 --device "Nexus 5X" --package "system-images;android-35;google_apis;$ANDROID_ARCH"
+        ${ANDROID_HOME}/emulator/emulator -list-avds
