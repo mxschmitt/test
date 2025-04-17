@@ -17,4 +17,5 @@ jobs:
     steps:
     - run: |
         echo $GITHUB_WORKFLOW
+        echo $GITHUB_JOB
         cat $GITHUB_EVENT_PATH
