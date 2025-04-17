@@ -16,4 +16,5 @@ jobs:
       fail-fast: false
     steps:
     - run: |
+        echo $GITHUB_WORKFLOW
         cat $GITHUB_EVENT_PATH
