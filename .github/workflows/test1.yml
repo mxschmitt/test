@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [buntu-24.04]
+        os: [ubuntu-24.04]
       fail-fast: false
     steps:
     - run: |
