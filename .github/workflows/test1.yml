@@ -17,5 +17,6 @@ jobs:
     steps:
     - run: |
         echo $GITHUB_WORKFLOW
+        echo "${{ github.job }}"
         echo $GITHUB_JOB
         cat $GITHUB_EVENT_PATH
