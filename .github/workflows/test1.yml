@@ -9,15 +9,7 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-22.04, ubuntu-24.04]
-      fail-fast: false
+    runs-on: ubuntu-24.04
     steps:
     - run: |
-        echo "XDG_CONFIG_HOME: $XDG_CONFIG_HOME"
-        export ANDROID_ARCH="x86_64"
-        ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-35;google_apis;$ANDROID_ARCH" platform-tools emulator
-        ${ANDROID_HOME}/cmdline-tools/latest/bin/avdmanager create avd --force --name android35 --device "Nexus 5X" --package "system-images;android-35;google_apis;$ANDROID_ARCH"
-        ${ANDROID_HOME}/emulator/emulator -list-avds
+        echo "Consider running tests from slow files in parallel, see https://playwright.dev/docs/test-parallel."
