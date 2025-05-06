@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - run: |
-        echo "Consider running tests from slow files in parallel, see https://playwright.dev/docs/test-parallel."
+        id
