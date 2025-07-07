@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-
 jobs:
   test:
     runs-on: windows-2025
