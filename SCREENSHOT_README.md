@@ -11,6 +11,12 @@ The `screenshot-max-sh.js` script uses Playwright to:
 
 ## Usage
 
+First, install Playwright browsers:
+```bash
+npx playwright install
+```
+
+Then run the screenshot script:
 ```bash
 npm run screenshot-max-sh
 ```
@@ -21,7 +27,9 @@ npm run screenshot-max-sh
 
 ![Blocked Domain Screenshot](https://github.com/user-attachments/assets/6f97010c-9bc7-4bc2-8c9d-0e86ec899219)
 
-The script is designed to handle this gracefully and would work properly in environments where the domain is accessible.
+The script is designed to handle this gracefully and would work properly in environments where:
+1. Playwright browsers are installed
+2. The domain is accessible (not blocked by network policies)
 
 ## Files Added
 
