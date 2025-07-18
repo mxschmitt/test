@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "screenshot-max-sh": "node screenshot-max-sh.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
