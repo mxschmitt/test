@@ -8,7 +8,15 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    runs-on: windows-2025
+    runs-on: ubuntu-22.04
     steps:
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+    - run: |
+        curl -fsSL get.docker.com | sh
+        
+        sudo service docker stop
+        sudo mv /var/lib/docker /mnt/docker
+        echo '{ "data-root": "/mnt/docker" }' | sudo tee /etc/docker/daemon.json
+        sudo service docker start
+        
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+        
