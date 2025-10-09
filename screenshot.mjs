@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer';
-import { pathToFileURL } from 'url';
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -10,7 +9,7 @@ import { pathToFileURL } from 'url';
     width: 500,
     height: 500,
   });
-  await page.goto(pathToFileURL('canvas.html'));
-  await page.screenshot({path: 'screenshot.png'});
+  await page.goto('https://playwright.dev/');
+  await page.screenshot({path: 'foo.png'});
   await browser.close();
 })();
