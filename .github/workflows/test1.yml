@@ -10,13 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-    - run: |
-        curl -fsSL get.docker.com | sh
-        
-        sudo service docker stop
-        sudo mv /var/lib/docker /mnt/docker
-        echo '{ "data-root": "/mnt/docker" }' | sudo tee /etc/docker/daemon.json
-        sudo service docker start
-        
-        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    - name: Setup upterm session
+      uses: owenthereal/action-upterm@v1
         
