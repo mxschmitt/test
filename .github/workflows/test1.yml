@@ -8,9 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: windows-latest
     steps:
     - name: Setup upterm session
       uses: owenthereal/action-upterm@v1
-      with:
-        limit-access-to-actor: true
